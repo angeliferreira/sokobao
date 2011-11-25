@@ -2,11 +2,15 @@ package main;
 
 import java.awt.Point;
 
+import main.directions.East;
+import main.gameElement.GameElement;
+
 public class Sokobao2000 {
 
 	private Grid grid;
 	private Point heroPosition;
-	
+	private GameElement hero;
+		
 	public Sokobao2000() {
 		this.grid = LevelGame.gridLevel1();
 		this.heroPosition = this.grid.getHeroInitialPosition();
@@ -25,6 +29,7 @@ public class Sokobao2000 {
 		this.grid.setPositionWithValue(this.heroPosition, ' ');
 		this.grid.setPositionWithValue(heroDesiredPosition, 'H');
 		this.heroPosition = heroDesiredPosition;
+//		this.grid.move(this.hero, East.getInstance());
 	}
 
 	public void moveHeroWest() {
