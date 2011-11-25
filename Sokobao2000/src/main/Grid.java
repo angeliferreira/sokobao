@@ -2,6 +2,10 @@ package main;
 
 import java.awt.Point;
 
+import main.directions.Direction;
+import main.directions.East;
+import main.gameElement.GameElement;
+
 public class Grid {
 
 	private Character[][] matrix;
@@ -11,11 +15,11 @@ public class Grid {
 	}
 	
 	public boolean isDesiredPositionAWall(Point desiredPosition) {
-		return (this.getMatrix()[desiredPosition.y][desiredPosition.x] == 'W');
+		return (this.matrix[desiredPosition.y][desiredPosition.x] == 'W');
 	}
 
 	public boolean isDesiredPositionABlock(Point desiredPosition) {
-		return (this.getMatrix()[desiredPosition.y][desiredPosition.x] == 'B');
+		return (this.matrix[desiredPosition.y][desiredPosition.x] == 'B');
 	}
 
 	public boolean isDesiredPositionABlockOrWall(Point desiredPosition) {
@@ -23,13 +27,13 @@ public class Grid {
 	}
 	
 	public void setPositionWithValue(Point position, Character character) {
-		this.getMatrix()[position.y][position.x] = character;
+		this.matrix[position.y][position.x] = character;
 	}
 	
 	public Point getHeroInitialPosition() {
-		for (int i = 0; i < this.getMatrix().length; i++) {
-			for (int j = 0; j < this.getMatrix().length; j++) {
-				if (this.getMatrix()[i][j] == 'H') return new Point(j, i);
+		for (int i = 0; i < this.matrix.length; i++) {
+			for (int j = 0; j < this.matrix.length; j++) {
+				if (this.matrix[i][j] == 'H') return new Point(j, i);
 			}
 		}
 		return null;		
@@ -38,5 +42,22 @@ public class Grid {
 	public Character[][] getMatrix() {
 		return matrix;
 	}
+	
+//	public GameElement getElement(Point position) {
+//		return this.matrix[position.y][position.x];
+//	}
+//	
+//	public void move(GameElement element, Direction direction) {
+//		Point desiredPosition = direction.newPosition(element.getPosition()); 
+//		if (isDesiredPositionAWall(desiredPosition)) return;
+//		if (isDesiredPositionABlock(desiredPosition)) {
+//			Point blockDesiredPosition = direction.newPosition(this.getElement(desiredPosition).getPosition()); 
+//			if (isDesiredPositionABlockOrWall(blockDesiredPosition)) return;
+//			this.setPositionWithValue(blockDesiredPosition, 'B');
+//		}
+//		this.setPositionWithValue(this.heroPosition, ' ');
+//		this.setPositionWithValue(desiredPosition, 'H');
+//		this.heroPosition = desiredPosition;
+//	}
 	
 }
