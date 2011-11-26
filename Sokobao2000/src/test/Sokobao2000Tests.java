@@ -60,8 +60,8 @@ public class Sokobao2000Tests {
 	public void getHeroInitialPositionLevel1() {
 		Sokobao2000 sokobao = new Sokobao2000();
 		
-		Assert.assertEquals(2, sokobao.getHeroPosition().x);
-		Assert.assertEquals(4, sokobao.getHeroPosition().y);
+		Assert.assertEquals(2, sokobao.getHero().getPosition().x);
+		Assert.assertEquals(4, sokobao.getHero().getPosition().y);
 	}
 	
 	@Test
@@ -69,8 +69,8 @@ public class Sokobao2000Tests {
 		Sokobao2000 sokobao = new Sokobao2000();
 		sokobao.moveHeroEast();
 		
-		Assert.assertEquals(3, sokobao.getHeroPosition().x);
-		Assert.assertEquals(4, sokobao.getHeroPosition().y);
+		Assert.assertEquals(3, sokobao.getGrid().getHeroPosition().x);
+		Assert.assertEquals(4, sokobao.getGrid().getHeroPosition().y);
 	}
 
 	@Test
@@ -78,8 +78,8 @@ public class Sokobao2000Tests {
 		Sokobao2000 sokobao = new Sokobao2000();
 		sokobao.moveHeroWest();
 		
-		Assert.assertEquals(1, sokobao.getHeroPosition().x);
-		Assert.assertEquals(4, sokobao.getHeroPosition().y);
+		Assert.assertEquals(1, sokobao.getGrid().getHeroPosition().x);
+		Assert.assertEquals(4, sokobao.getGrid().getHeroPosition().y);
 	}
 	
 	@Test
@@ -87,8 +87,8 @@ public class Sokobao2000Tests {
 		Sokobao2000 sokobao = new Sokobao2000();
 		sokobao.moveHeroNorth();
 		
-		Assert.assertEquals(2, sokobao.getHeroPosition().x);
-		Assert.assertEquals(3, sokobao.getHeroPosition().y);
+		Assert.assertEquals(2, sokobao.getGrid().getHeroPosition().x);
+		Assert.assertEquals(3, sokobao.getGrid().getHeroPosition().y);
 	}
 	
 	@Test
@@ -96,8 +96,8 @@ public class Sokobao2000Tests {
 		Sokobao2000 sokobao = new Sokobao2000();
 		sokobao.moveHeroSouth();
 		
-		Assert.assertEquals(2, sokobao.getHeroPosition().x);
-		Assert.assertEquals(5, sokobao.getHeroPosition().y);
+		Assert.assertEquals(2, sokobao.getGrid().getHeroPosition().x);
+		Assert.assertEquals(5, sokobao.getGrid().getHeroPosition().y);
 	}
 	
 	@Test

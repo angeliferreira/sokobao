@@ -4,7 +4,7 @@ import java.awt.Point;
 
 public abstract class GameElement {
 	
-	private Point position;
+	protected Point position;
 
 	public void setPosition(Point position) {
 		this.position = position;
