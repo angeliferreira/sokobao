@@ -1,17 +1,23 @@
 package main;
 
+import java.awt.Point;
 import java.util.List;
+
+import main.gameElement.GameElement;
+import main.gameElement.GameElementFactory;
 
 public class LevelConverter {
 
 	public static Grid templateToGrid(List<String> templateList) {
-		Character[][] array = new Character[10][10];
-		for (int i = 0; i < array.length; i++) {
-			for (int j = 0; j < array.length; j++) {
-				array[i][j] = templateList.get(i).charAt(j);
+		Grid grid = new Grid(new GameElement[10][10]);
+		
+		for (int i = 0; i < grid.getMatrix().length; i++) {
+			for (int j = 0; j < grid.getMatrix().length; j++) {
+				grid.setPositionWithValue(new Point(j, i), GameElementFactory.newInstance(templateList.get(i).charAt(j), new Point(j, i)));
 			}
 		}
-		return new Grid(array);
+		
+		return grid;
 	}
 
 }

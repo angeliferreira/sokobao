@@ -10,7 +10,7 @@ public class Utils {
 
 		for (int i = 0; i < grid.getMatrix().length; i++) {
 			for (int j = 0; j < grid.getMatrix().length; j++) {
-				line = line + grid.getMatrix()[i][j];
+				line = line + grid.getMatrix()[i][j].getSingleName();
 			}
 		}
 				
