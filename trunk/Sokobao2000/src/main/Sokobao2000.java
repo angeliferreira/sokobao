@@ -1,13 +1,10 @@
 package main;
 
-import java.awt.Point;
-
 import main.directions.East;
 import main.directions.North;
 import main.directions.South;
 import main.directions.West;
 import main.gameElement.GameElement;
-import main.gameElement.Hero;
 
 public class Sokobao2000 {
 
@@ -16,7 +13,7 @@ public class Sokobao2000 {
 		
 	public Sokobao2000() {
 		this.grid = LevelGame.gridLevel1();
-		this.hero = new Hero(this.grid.getHeroPosition());
+		this.hero = this.grid.getElement(this.grid.getHeroPosition());
 	}
 
 	public void moveHeroEast() {
@@ -41,11 +38,6 @@ public class Sokobao2000 {
 
 	public Grid getGrid() {
 		return this.grid;
-	}
-
-	public void setHeroPosition(Point heroNewPosition) {
-		this.grid.updatePositions(this.hero.getPosition(), heroNewPosition);
-		this.hero.setPosition(heroNewPosition);
 	}
 
 	public void setHero(GameElement hero) {

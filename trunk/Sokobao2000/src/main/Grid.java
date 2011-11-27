@@ -3,46 +3,47 @@ package main;
 import java.awt.Point;
 
 import main.directions.Direction;
+import main.gameElement.GameElement;
 
 public class Grid {
 
-	private Character[][] matrix;
+	private GameElement[][] matrix;
 		
-	public Grid(Character[][] level) {
+	public Grid(GameElement[][] level) {
 		this.matrix = level;
 	}
 	
 	public boolean isDesiredPositionAWall(Point desiredPosition) {
-		return (this.matrix[desiredPosition.y][desiredPosition.x] == 'W');
+		return (this.getElement(desiredPosition).isWall());
 	}
 
 	public boolean isDesiredPositionABlock(Point desiredPosition) {
-		return (this.matrix[desiredPosition.y][desiredPosition.x] == 'B');
+		return (this.getElement(desiredPosition).isBlock());
 	}
 
 	public boolean isDesiredPositionABlockOrWall(Point desiredPosition) {
 		return (isDesiredPositionABlock(desiredPosition) || isDesiredPositionAWall(desiredPosition));
 	}
 	
-	public void setPositionWithValue(Point position, Character character) {
-		this.matrix[position.y][position.x] = character;
+	public void setPositionWithValue(Point position, GameElement gameElement) {
+		this.matrix[position.y][position.x] = gameElement;
+		gameElement.setPosition(position);
 	}
 	
 	public Point getHeroPosition() {
 		for (int i = 0; i < this.matrix.length; i++) {
 			for (int j = 0; j < this.matrix.length; j++) {
-				if (this.matrix[i][j] == 'H') return new Point(j, i);
+				if (this.matrix[i][j].isHero()) return new Point(j, i);
 			}
 		}
 		return null;		
 	}
 
-	public Character[][] getMatrix() {
+	public GameElement[][] getMatrix() {
 		return matrix;
 	}
 	
-//	TODO -> CHANGE RETURN TO GameElement
-	public Character getElement(Point position) {
+	public GameElement getElement(Point position) {
 		return this.matrix[position.y][position.x];
 	}
 	
@@ -52,19 +53,16 @@ public class Grid {
 		if (isDesiredPositionABlock(desiredPosition)) {
 			Point blockDesiredPosition = direction.newPosition(desiredPosition); 
 			if (isDesiredPositionABlockOrWall(blockDesiredPosition)) return;
-			this.updatePositions(desiredPosition, blockDesiredPosition);
+			this.changePositions(desiredPosition, blockDesiredPosition);
 		}
-		this.updatePositions(position, desiredPosition);
+		this.changePositions(position, desiredPosition);
 	}
 	
-	public void updatePositions(Point oldPosition, Point newPosition) {
-//		GameElement element = this.getElement(oldPosition);
-		Character element = this.getElement(oldPosition);
-		
-//		this.matrix[oldPosition.y][oldPosition.x] = new DumbElement();
-		this.matrix[oldPosition.y][oldPosition.x] = ' ';
-		
-		this.matrix[newPosition.y][newPosition.x] = element;
+	public void changePositions(Point oldPosition, Point newPosition) {
+		GameElement elementOldPosition = this.getElement(oldPosition);
+				
+		this.setPositionWithValue(oldPosition, this.getElement(newPosition));
+		this.setPositionWithValue(newPosition, elementOldPosition);
 	}
 
 }
