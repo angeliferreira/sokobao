@@ -283,4 +283,32 @@ public class Utils {
 		return template;
 	}
 
+	public static String gridTemplateLevel1WithHeroOnTheTarget() {
+		String template =     "WWWWWWWWWW";
+		template = template + "W        W"; 
+		template = template + "W  B   H W"; 
+		template = template + "W     B  W";
+		template = template + "W        W";
+		template = template + "W     X  W";
+		template = template + "W   B    W";
+		template = template + "W X    B W";
+		template = template + "W     X  W";
+		template = template + "WWWWWWWWWW";
+		return template;
+	}
+
+	public static String gridTemplateLevel1WithHorizontalPositioningTargetHero() {
+		String template =     "WWWWWWWWWW";
+		template = template + "W        W"; 
+		template = template + "W  B   XHW"; 
+		template = template + "W     B  W";
+		template = template + "W        W";
+		template = template + "W     X  W";
+		template = template + "W   B    W";
+		template = template + "W X    B W";
+		template = template + "W     X  W";
+		template = template + "WWWWWWWWWW";
+		return template;
+	}
+
 }
