@@ -5,6 +5,7 @@ import java.awt.Point;
 import junit.framework.Assert;
 import main.Sokobao2000;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import test.Utils.LevelTest;
@@ -259,4 +260,38 @@ public class Sokobao2000Tests {
 		Assert.assertEquals(Utils.gridTemplateLevel1WithVerticalPositioningHeroBlockBlock(),
 				Utils.bidimensionalArrayAsStringOfElementsConcatenated(sokobao.getGrid()));
 	}
+	
+	@Test
+	public void tryToPassHeroThroughTargetMovingEast() {
+		Sokobao2000 sokobao = new Sokobao2000();
+		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(6,2));
+		sokobao.moveHeroEast();
+		
+		Assert.assertEquals(Utils.gridTemplateLevel1WithHeroOnTheTarget(),
+				Utils.bidimensionalArrayAsStringOfElementsConcatenated(sokobao.getGrid()));
+		
+		sokobao.moveHeroEast();
+		
+		Assert.assertEquals(Utils.gridTemplateLevel1WithHorizontalPositioningTargetHero(),
+				Utils.bidimensionalArrayAsStringOfElementsConcatenated(sokobao.getGrid()));
+	}
+	
+	@Test
+	@Ignore
+	public void tryToPassHeroThroughTargetMovingWest() {
+
+	}
+	
+	@Test
+	@Ignore
+	public void tryToPassHeroThroughTargetMovingNorth() {
+
+	}
+	
+	@Test
+	@Ignore
+	public void tryToPassHeroThroughTargetMovingSouth() {
+
+	}
+	
 }
