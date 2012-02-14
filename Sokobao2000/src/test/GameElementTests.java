@@ -1,9 +1,6 @@
 package test;
 
-import java.awt.Point;
-
 import junit.framework.Assert;
-
 import main.gameElement.GameElement;
 import main.gameElement.GameElementFactory;
 
@@ -13,38 +10,32 @@ public class GameElementTests {
 	
 	@Test
 	public void newHeroTest() {
-		GameElement hero = GameElementFactory.newInstance('H', new Point(0, 0)); 
-		
-		Assert.assertEquals("Hero", hero.getClass().getSimpleName());
-		Assert.assertEquals(0, hero.getPosition().x);
-		Assert.assertEquals(0, hero.getPosition().y);
+		GameElement hero = GameElementFactory.newInstance('H'); 
+		Assert.assertEquals('H', hero.getSingleName());
 	}
 	
 	@Test
 	public void newWallTest() {
-		GameElement wall = GameElementFactory.newInstance('W', new Point(1, 1)); 
-		
-		Assert.assertEquals("Wall", wall.getClass().getSimpleName());
-		Assert.assertEquals(1, wall.getPosition().x);
-		Assert.assertEquals(1, wall.getPosition().y);
+		GameElement wall = GameElementFactory.newInstance('W'); 
+		Assert.assertEquals('W', wall.getSingleName());
 	}
 	
 	@Test
 	public void newBlockTest() {
-		GameElement block = GameElementFactory.newInstance('B', new Point(0, 0)); 
-		
-		Assert.assertEquals("Block", block.getClass().getSimpleName());
-		Assert.assertEquals(0, block.getPosition().x);
-		Assert.assertEquals(0, block.getPosition().y);
+		GameElement block = GameElementFactory.newInstance('B'); 
+		Assert.assertEquals('B', block.getSingleName());
 	}
 	
 	@Test
 	public void newDumbElementTest() {
-		GameElement dumbElement = GameElementFactory.newInstance(' ', new Point(0, 0)); 
-		
-		Assert.assertEquals("DumbElement", dumbElement.getClass().getSimpleName());
-		Assert.assertEquals(0, dumbElement.getPosition().x);
-		Assert.assertEquals(0, dumbElement.getPosition().y);
+		GameElement dumbElement = GameElementFactory.newInstance(' '); 
+		Assert.assertEquals(' ', dumbElement.getSingleName());
+	}
+	
+	@Test
+	public void newTargetTest() {
+		GameElement dumbElement = GameElementFactory.newInstance('X'); 
+		Assert.assertEquals('X', dumbElement.getSingleName());
 	}
 
 }
