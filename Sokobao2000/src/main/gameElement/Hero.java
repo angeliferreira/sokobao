@@ -1,12 +1,10 @@
 package main.gameElement;
 
-import java.awt.Point;
 
 public class Hero extends GameElement {
 
-	public Hero(Point position) {
-		this.position = position;
-		this.singleName = 'H';
+	public Hero() {
+		setSingleName('H');
 	}
 	
 	public boolean isHero() {

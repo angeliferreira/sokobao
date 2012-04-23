@@ -10,26 +10,26 @@ public class GameElementTests {
 	
 	@Test
 	public void newHeroTest() {
-		GameElement hero = GameElementFactory.newInstance('H'); 
+		GameElement hero = GameElementFactory.newHero();
 		Assert.assertEquals('H', hero.getSingleName());
 	}
 	
 	@Test
 	public void newWallTest() {
-		GameElement wall = GameElementFactory.newInstance('W'); 
-		Assert.assertEquals('W', wall.getSingleName());
+		GameElement hero = GameElementFactory.newWall();
+		Assert.assertEquals('W', hero.getSingleName());
 	}
 	
 	@Test
 	public void newBlockTest() {
-		GameElement block = GameElementFactory.newInstance('B'); 
-		Assert.assertEquals('B', block.getSingleName());
+		GameElement hero = GameElementFactory.newBlock();
+		Assert.assertEquals('B', hero.getSingleName());
 	}
 	
 	@Test
 	public void newDumbElementTest() {
-		GameElement dumbElement = GameElementFactory.newInstance(' '); 
-		Assert.assertEquals(' ', dumbElement.getSingleName());
+		GameElement hero = GameElementFactory.newDumbElement();
+		Assert.assertEquals(' ', hero.getSingleName());
 	}
 	
 	@Test
