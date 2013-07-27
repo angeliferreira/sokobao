@@ -9,9 +9,9 @@ public class West implements Direction {
 	private West() { }
 
 	public static West getInstance() {
-		if (instance == null) {
+		if (instance == null)
 			instance = new West();
-		}
+
 		return instance;
 	}
 	

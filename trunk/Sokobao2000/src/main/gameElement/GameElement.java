@@ -1,51 +1,36 @@
 package main.gameElement;
 
-import java.awt.Point;
+
 
 public abstract class GameElement {
 	
-	protected Point position;
 	protected char singleName;
 
-	public void setPosition(Point position) {
-		this.position = position;
-	}
-
-	public Point getPosition() {
-		return position;
-	}
-
-	public void setSingleName(char singleName) {
+	protected void setSingleName(char singleName) {
 		this.singleName = singleName;
 	}
 
-	public char getSingleName() {
+	private char getSingleName() {
 		return singleName;
-	}
-	
-	public boolean isHero() {
-		return false;
-	}
-	
-	public boolean isWall() {
-		return false;
-	}
-	
-	public boolean isBlock() {
-		return false;
-	}
-	
-	public boolean isDumbElement() {
-		return false;
-	}
-	
-	public boolean isTarget() {
-		return false;
 	}
 	
 	@Override
 	public String toString() {
 		return String.valueOf(getSingleName());
+	}
+	
+	public enum StringRepresentation {
+	    WALL("W"), TARGET("X"), BLOCK("B"), HERO("H"), DUMB(" "), TARGET_WITH_HERO("#"), TARGET_WITH_BLOCK("$");
+	    
+	    private StringRepresentation(String representation) {
+			this.representation = representation;
+		}
+	    
+	    private String representation;
+	    
+	    public String represent() {
+	    	return representation;
+	    }
 	}
 	
 }

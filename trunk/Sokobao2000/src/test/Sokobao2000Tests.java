@@ -61,8 +61,8 @@ public class Sokobao2000Tests {
 	public void getHeroInitialPositionLevel1() {
 		Sokobao2000 sokobao = new Sokobao2000();
 		
-		Assert.assertEquals(2, sokobao.getHero().getPosition().x);
-		Assert.assertEquals(4, sokobao.getHero().getPosition().y);
+		Assert.assertEquals(2, sokobao.getGrid().getCellWithHero().getPosition().x);
+		Assert.assertEquals(4, sokobao.getGrid().getCellWithHero().getPosition().y);
 	}
 	
 	@Test
@@ -70,8 +70,8 @@ public class Sokobao2000Tests {
 		Sokobao2000 sokobao = new Sokobao2000();
 		sokobao.moveHeroEast();
 		
-		Assert.assertEquals(3, sokobao.getHero().getPosition().x);
-		Assert.assertEquals(4, sokobao.getHero().getPosition().y);
+		Assert.assertEquals(3, sokobao.getGrid().getCellWithHero().getPosition().x);
+		Assert.assertEquals(4, sokobao.getGrid().getCellWithHero().getPosition().y);
 	}
 
 	@Test
@@ -79,8 +79,8 @@ public class Sokobao2000Tests {
 		Sokobao2000 sokobao = new Sokobao2000();
 		sokobao.moveHeroWest();
 		
-		Assert.assertEquals(1, sokobao.getHero().getPosition().x);
-		Assert.assertEquals(4, sokobao.getHero().getPosition().y);
+		Assert.assertEquals(1, sokobao.getGrid().getCellWithHero().getPosition().x);
+		Assert.assertEquals(4, sokobao.getGrid().getCellWithHero().getPosition().y);
 	}
 	
 	@Test
@@ -88,8 +88,8 @@ public class Sokobao2000Tests {
 		Sokobao2000 sokobao = new Sokobao2000();
 		sokobao.moveHeroNorth();
 		
-		Assert.assertEquals(2, sokobao.getHero().getPosition().x);
-		Assert.assertEquals(3, sokobao.getHero().getPosition().y);
+		Assert.assertEquals(2, sokobao.getGrid().getCellWithHero().getPosition().x);
+		Assert.assertEquals(3, sokobao.getGrid().getCellWithHero().getPosition().y);
 	}
 	
 	@Test
@@ -97,14 +97,14 @@ public class Sokobao2000Tests {
 		Sokobao2000 sokobao = new Sokobao2000();
 		sokobao.moveHeroSouth();
 		
-		Assert.assertEquals(2, sokobao.getHero().getPosition().x);
-		Assert.assertEquals(5, sokobao.getHero().getPosition().y);
+		Assert.assertEquals(2, sokobao.getGrid().getCellWithHero().getPosition().x);
+		Assert.assertEquals(5, sokobao.getGrid().getCellWithHero().getPosition().y);
 	}
 	
 	@Test
 	public void tryToPassHeroThroughWallMovingEast() {
 		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(8,4));
+		sokobao.getGrid().moveGameElement(sokobao.getGrid().getCellWithHero().getPosition(), new Point(8,4));
 		sokobao.moveHeroEast();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroEast6Cells(),
@@ -114,7 +114,7 @@ public class Sokobao2000Tests {
 	@Test
 	public void tryToPassHeroThroughWallMovingWest() {
 		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(1,4));
+		sokobao.getGrid().moveGameElement(sokobao.getGrid().getCellWithHero().getPosition(), new Point(1,4));
 		sokobao.moveHeroWest();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroWest1Cell(),
@@ -124,7 +124,7 @@ public class Sokobao2000Tests {
 	@Test
 	public void tryToPassHeroThroughWallMovingNorth() {
 		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(2,1));
+		sokobao.getGrid().moveGameElement(sokobao.getGrid().getCellWithHero().getPosition(), new Point(2,1));
 		sokobao.moveHeroNorth();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroNorth3Cells(),
@@ -134,7 +134,7 @@ public class Sokobao2000Tests {
 	@Test
 	public void tryToPassHeroThroughWallMovingSouth() {
 		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(3,8));
+		sokobao.getGrid().moveGameElement(sokobao.getGrid().getCellWithHero().getPosition(), new Point(3,8));
 		sokobao.moveHeroSouth();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroEast1CellAndSouth4Cells(),
@@ -144,7 +144,7 @@ public class Sokobao2000Tests {
 	@Test
 	public void heroMoveBlockEast() {
 		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(2,2));
+		sokobao.getGrid().moveGameElement(sokobao.getGrid().getCellWithHero().getPosition(), new Point(2,2));
 		sokobao.moveHeroEast();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroNorth2CellsAndHeroMoveBlockEast1Cell(),
@@ -154,7 +154,7 @@ public class Sokobao2000Tests {
 	@Test
 	public void heroMoveBlockWest() {
 		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(4,2));
+		sokobao.getGrid().moveGameElement(sokobao.getGrid().getCellWithHero().getPosition(), new Point(4,2));
 		sokobao.moveHeroWest();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroEast2CellsNorth2CellsAndHeroMoveBlockWest1Cell(),
@@ -164,7 +164,7 @@ public class Sokobao2000Tests {
 	@Test
 	public void heroMoveBlockNorth() {
 		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(3,3));
+		sokobao.getGrid().moveGameElement(sokobao.getGrid().getCellWithHero().getPosition(), new Point(3,3));
 		sokobao.moveHeroNorth();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroEast1CellNorth1CellAndHeroMoveBlockNorth1Cell(),
@@ -174,7 +174,7 @@ public class Sokobao2000Tests {
 	@Test
 	public void heroMoveBlockSouth() {
 		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(4,5));
+		sokobao.getGrid().moveGameElement(sokobao.getGrid().getCellWithHero().getPosition(), new Point(4,5));
 		sokobao.moveHeroSouth();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroEast2CellsSouth1CellAndHeroMoveBlockSouth1Cell(),
@@ -183,8 +183,7 @@ public class Sokobao2000Tests {
 	
 	@Test
 	public void tryToPassBlockThroughWallMovingEast() {
-		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.setGrid(LevelTest.gridTemplateLevel1MovingHeroNorth1CellEast3CellsAndHeroMoveBlockEast2Cells());
+		Sokobao2000 sokobao = new Sokobao2000(LevelTest.gridTemplateLevel1MovingHeroNorth1CellEast3CellsAndHeroMoveBlockEast2Cells());
 		sokobao.moveHeroEast();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroNorth1CellEast3CellsAndHeroMoveBlockEast2Cells(),
@@ -193,8 +192,7 @@ public class Sokobao2000Tests {
 	
 	@Test
 	public void tryToPassBlockThroughWallMovingWest() {
-		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.setGrid(LevelTest.gridTemplateLevel1MovingHeroEast2CellsNorth2CellsAndHeroMoveBlockWest2Cells());
+		Sokobao2000 sokobao = new Sokobao2000(LevelTest.gridTemplateLevel1MovingHeroEast2CellsNorth2CellsAndHeroMoveBlockWest2Cells());
 		sokobao.moveHeroWest();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroEast2CellsNorth2CellsAndHeroMoveBlockWest2Cells(),
@@ -203,8 +201,7 @@ public class Sokobao2000Tests {
 	
 	@Test
 	public void tryToPassBlockThroughWallMovingNorth() {
-		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.setGrid(LevelTest.gridTemplateLevel1MovingHeroEast1CellNorth1CellAndHeroMoveBlockNorth1Cell());
+		Sokobao2000 sokobao = new Sokobao2000(LevelTest.gridTemplateLevel1MovingHeroEast1CellNorth1CellAndHeroMoveBlockNorth1Cell());
 		sokobao.moveHeroNorth();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroEast1CellNorth1CellAndHeroMoveBlockNorth1Cell(),
@@ -213,8 +210,7 @@ public class Sokobao2000Tests {
 	
 	@Test
 	public void tryToPassBlockThroughWallMovingSouth() {
-		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.setGrid(LevelTest.gridTemplateLevel1MovingHeroEast2CellsSouth1CellAndHeroMoveBlockSouth2Cells());
+		Sokobao2000 sokobao = new Sokobao2000(LevelTest.gridTemplateLevel1MovingHeroEast2CellsSouth1CellAndHeroMoveBlockSouth2Cells());
 		sokobao.moveHeroSouth();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1MovingHeroEast2CellsSouth1CellAndHeroMoveBlockSouth2Cells(),
@@ -223,8 +219,7 @@ public class Sokobao2000Tests {
 	
 	@Test
 	public void tryToPassBlockThroughAnotherBlockMovingEast() {
-		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.setGrid(LevelTest.gridTemplateLevel1WithHorizontalPositioningHeroBlockBlock());
+		Sokobao2000 sokobao = new Sokobao2000(LevelTest.gridTemplateLevel1WithHorizontalPositioningHeroBlockBlock());
 		sokobao.moveHeroEast();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1WithHorizontalPositioningHeroBlockBlock(),
@@ -233,8 +228,7 @@ public class Sokobao2000Tests {
 	
 	@Test
 	public void tryToPassBlockThroughAnotherBlockMovingWest() {
-		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.setGrid(LevelTest.gridTemplateLevel1WithHorizontalPositioningBlockBlockHero());
+		Sokobao2000 sokobao = new Sokobao2000(LevelTest.gridTemplateLevel1WithHorizontalPositioningBlockBlockHero());
 		sokobao.moveHeroWest();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1WithHorizontalPositioningBlockBlockHero(),
@@ -243,8 +237,7 @@ public class Sokobao2000Tests {
 
 	@Test
 	public void tryToPassBlockThroughAnotherBlockMovingNorth() {
-		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.setGrid(LevelTest.gridTemplateLevel1WithVerticalPositioningBlockBlockHero());
+		Sokobao2000 sokobao = new Sokobao2000(LevelTest.gridTemplateLevel1WithVerticalPositioningBlockBlockHero());
 		sokobao.moveHeroNorth();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1WithVerticalPositioningBlockBlockHero(),
@@ -253,8 +246,7 @@ public class Sokobao2000Tests {
 	
 	@Test
 	public void tryToPassBlockThroughAnotherBlockMovingSouth() {
-		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.setGrid(LevelTest.gridTemplateLevel1WithVerticalPositioningHeroBlockBlock());
+		Sokobao2000 sokobao = new Sokobao2000(LevelTest.gridTemplateLevel1WithVerticalPositioningHeroBlockBlock());
 		sokobao.moveHeroSouth();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1WithVerticalPositioningHeroBlockBlock(),
@@ -264,7 +256,7 @@ public class Sokobao2000Tests {
 	@Test
 	public void tryToPassHeroThroughTargetMovingEast() {
 		Sokobao2000 sokobao = new Sokobao2000();
-		sokobao.getGrid().changePositions(sokobao.getHero().getPosition(), new Point(6,2));
+		sokobao.getGrid().moveGameElement(sokobao.getGrid().getCellWithHero().getPosition(), new Point(6,2));
 		sokobao.moveHeroEast();
 		
 		Assert.assertEquals(Utils.gridTemplateLevel1WithHeroOnTheTarget(),

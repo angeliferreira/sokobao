@@ -1,13 +1,30 @@
 package main.gameElement;
 
 
-import main.gameElement.gameElementImpl.Block;
-import main.gameElement.gameElementImpl.EmptyElement;
-import main.gameElement.gameElementImpl.Hero;
-import main.gameElement.gameElementImpl.Target;
-import main.gameElement.gameElementImpl.Wall;
+import junit.framework.Assert;
 
 public class GameElementFactory {
+	
+	public static GameElement newGameElement(char gameElementSingleName) {
+		
+		if(gameElementSingleName == 'H')
+			return newHero();
+		
+		if(gameElementSingleName == 'W')
+			return newWall();
+		
+		if(gameElementSingleName == 'B')
+			return newBlock();
+		
+		if(gameElementSingleName == 'X')
+			return newTarget();
+		
+		if(gameElementSingleName == ' ')
+			return newDumbElement();
+		
+		Assert.fail("Ops, " + gameElementSingleName + " is not a single name for a game element. Sorry.");
+		return null;
+	}
 	
 	public static GameElement newHero() {
 		return new Hero();
@@ -19,6 +36,10 @@ public class GameElementFactory {
 
 	public static GameElement newBlock() {
 		return new Block();
+	}
+	
+	public static GameElement newTarget() {
+		return new Target();
 	}
 
 	public static GameElement newDumbElement() {

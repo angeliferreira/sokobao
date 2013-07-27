@@ -7,8 +7,4 @@ public class Hero extends GameElement {
 		setSingleName('H');
 	}
 	
-	public boolean isHero() {
-		return true;
-	}
-	
 }

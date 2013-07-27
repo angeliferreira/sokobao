@@ -7,8 +7,4 @@ public class Block extends GameElement {
 		setSingleName('B');
 	}
 
-	public boolean isBlock() {
-		return true;
-	}
-	
 }
