@@ -9,9 +9,9 @@ public class North implements Direction {
 	private North() { }
 
 	public static North getInstance() {
-		if (instance == null) {
+		if (instance == null)
 			instance = new North();
-		}
+
 		return instance;
 	}
 	

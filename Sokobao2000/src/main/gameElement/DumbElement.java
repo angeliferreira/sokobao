@@ -7,8 +7,4 @@ public class DumbElement extends GameElement {
 		setSingleName(' ');
 	}
 
-	public boolean isDumbElement() {
-		return true;
-	}
-	
 }

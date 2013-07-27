@@ -1,68 +1,99 @@
 package main;
 
+import static main.gameElement.GameElement.StringRepresentation.BLOCK;
+import static main.gameElement.GameElement.StringRepresentation.HERO;
+import static main.gameElement.GameElement.StringRepresentation.WALL;
+
 import java.awt.Point;
 
+import junit.framework.Assert;
+import main.core.Cell;
 import main.directions.Direction;
 import main.gameElement.GameElement;
+import main.gameElement.GameElementFactory;
 
 public class Grid {
 
-	private GameElement[][] matrix;
+	private Cell[][] grid;
 		
-	public Grid(GameElement[][] level) {
-		this.matrix = level;
+	public Grid(Cell[][] level) {
+		grid = level;
 	}
 	
-	public boolean isDesiredPositionAWall(Point desiredPosition) {
-		return (this.getElement(desiredPosition).isWall());
+	private boolean isDesiredPositionAWall(Point desiredPosition) {
+		return getElement(desiredPosition).toString().equals(WALL.represent());
 	}
 
-	public boolean isDesiredPositionABlock(Point desiredPosition) {
-		return (this.getElement(desiredPosition).isBlock());
+	private boolean isDesiredPositionABlock(Point desiredPosition) {
+		return getElement(desiredPosition).toString().equals(BLOCK.represent());
 	}
 
-	public boolean isDesiredPositionABlockOrWall(Point desiredPosition) {
-		return (isDesiredPositionABlock(desiredPosition) || isDesiredPositionAWall(desiredPosition));
+	private boolean isDesiredPositionABlockOrWall(Point desiredPosition) {
+		return isDesiredPositionABlock(desiredPosition) || isDesiredPositionAWall(desiredPosition);
 	}
 	
-	public void setPositionWithValue(Point position, GameElement gameElement) {
-		this.matrix[position.y][position.x] = gameElement;
-		gameElement.setPosition(position);
-	}
-	
-	public Point getHeroPosition() {
-		for (int i = 0; i < this.matrix.length; i++) {
-			for (int j = 0; j < this.matrix.length; j++) {
-				if (this.matrix[i][j].isHero()) return new Point(j, i);
+	public Cell getCellWithHero() {
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid.length; j++) {
+				if (grid[i][j].toString().equals(HERO.represent()))
+					return grid[i][j];
 			}
 		}
+		
+		Assert.fail("Ops, no cell with Hero found here! :(");
 		return null;		
 	}
 
-	public GameElement[][] getMatrix() {
-		return matrix;
+	public Cell[][] getGrid() {
+		return grid;
 	}
 	
 	public GameElement getElement(Point position) {
-		return this.matrix[position.y][position.x];
+		return getCell(position).getSecondaryElement();
 	}
 	
-	public void move(Point position, Direction direction) {
-		Point desiredPosition = direction.newPosition(position); 
-		if (isDesiredPositionAWall(desiredPosition)) return;
-		if (isDesiredPositionABlock(desiredPosition)) {
-			Point blockDesiredPosition = direction.newPosition(desiredPosition); 
-			if (isDesiredPositionABlockOrWall(blockDesiredPosition)) return;
-			this.changePositions(desiredPosition, blockDesiredPosition);
-		}
-		this.changePositions(position, desiredPosition);
-	}
-	
-	public void changePositions(Point oldPosition, Point newPosition) {
-		GameElement elementOldPosition = this.getElement(oldPosition);
-				
-		this.setPositionWithValue(oldPosition, this.getElement(newPosition));
-		this.setPositionWithValue(newPosition, elementOldPosition);
+	void setElement(GameElement gameElement, Point position) {
+		getCell(position).setSecondaryElement(gameElement);
 	}
 
+	public Cell getCell(Point position) {
+		return grid[position.y][position.x];
+	}
+	
+	public void moveHero(Direction direction) {
+		Point originalHeroPosition = getCellWithHero().getPosition();
+		Point desiredPosition = direction.newPosition(originalHeroPosition);
+		
+		if (isDesiredPositionAWall(desiredPosition))
+			return;
+		
+		if (isDesiredPositionABlock(desiredPosition)) {
+			Point blockDesiredPosition = direction.newPosition(desiredPosition);
+			
+			if (isDesiredPositionABlockOrWall(blockDesiredPosition))
+				return;
+			
+			moveGameElements(originalHeroPosition, desiredPosition, blockDesiredPosition);
+		}
+		
+		moveGameElement(originalHeroPosition, desiredPosition);
+	}
+
+	public void moveGameElement(Point originalHeroPosition, Point desiredPosition) {
+		moveGameElements(originalHeroPosition, desiredPosition, null);
+	}
+	
+	private void moveGameElements(Point originalHeroPosition, Point desiredPosition, Point blockDesiredPosition) {
+		if(blockDesiredPosition != null)
+			getCell(blockDesiredPosition).setSecondaryElement(getElement(desiredPosition));
+		
+		getCell(desiredPosition).setSecondaryElement(getElement(originalHeroPosition));
+		getCell(originalHeroPosition).setSecondaryElement(GameElementFactory.newDumbElement());
+		
+	}
+
+	public void setCell(Cell cell) {
+		grid[cell.getPosition().y][cell.getPosition().x] = cell; 
+	}
+	
 }

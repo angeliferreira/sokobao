@@ -1,5 +1,7 @@
 package main.core;
 
+import java.awt.Point;
+
 
 
 public class BoardGame {
@@ -11,7 +13,7 @@ public class BoardGame {
 		
 		for (int i = 0; i < this.matrix.length; i++) {
 			for (int j = 0; j < this.matrix.length; j++) {
-				matrix[i][j] = Cell.newCellWithDumbElement();
+				matrix[i][j] = Cell.newCellWithDumbElement(new Point(j, i));
 			}
 		}
 	}
