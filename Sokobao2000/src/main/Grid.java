@@ -2,6 +2,7 @@ package main;
 
 import static main.gameElement.GameElement.StringRepresentation.BLOCK;
 import static main.gameElement.GameElement.StringRepresentation.HERO;
+import static main.gameElement.GameElement.StringRepresentation.TARGET_WITH_HERO;
 import static main.gameElement.GameElement.StringRepresentation.WALL;
 
 import java.awt.Point;
@@ -35,7 +36,7 @@ public class Grid {
 	public Cell getCellWithHero() {
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid.length; j++) {
-				if (grid[i][j].toString().equals(HERO.represent()))
+				if (grid[i][j].toString().equals(HERO.represent()) || grid[i][j].toString().equals(TARGET_WITH_HERO.represent()))
 					return grid[i][j];
 			}
 		}
@@ -67,16 +68,17 @@ public class Grid {
 		if (isDesiredPositionAWall(desiredPosition))
 			return;
 		
-		if (isDesiredPositionABlock(desiredPosition)) {
-			Point blockDesiredPosition = direction.newPosition(desiredPosition);
-			
-			if (isDesiredPositionABlockOrWall(blockDesiredPosition))
-				return;
-			
-			moveGameElements(originalHeroPosition, desiredPosition, blockDesiredPosition);
+		if (!isDesiredPositionABlock(desiredPosition)) {
+			moveGameElement(originalHeroPosition, desiredPosition);
+			return;
 		}
 		
-		moveGameElement(originalHeroPosition, desiredPosition);
+		Point blockDesiredPosition = direction.newPosition(desiredPosition);
+		
+		if (isDesiredPositionABlockOrWall(blockDesiredPosition))
+			return;
+		
+		moveGameElements(originalHeroPosition, desiredPosition, blockDesiredPosition);
 	}
 
 	public void moveGameElement(Point originalHeroPosition, Point desiredPosition) {
@@ -89,11 +91,15 @@ public class Grid {
 		
 		getCell(desiredPosition).setSecondaryElement(getElement(originalHeroPosition));
 		getCell(originalHeroPosition).setSecondaryElement(GameElementFactory.newDumbElement());
-		
 	}
 
 	public void setCell(Cell cell) {
 		grid[cell.getPosition().y][cell.getPosition().x] = cell; 
+	}
+	
+	@Override
+	public String toString() {
+		return grid.toString();
 	}
 	
 }

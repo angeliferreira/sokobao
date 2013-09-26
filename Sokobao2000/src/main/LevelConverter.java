@@ -12,7 +12,7 @@ public class LevelConverter {
 		
 		for (int i = 0; i < grid.getGrid().length; i++) {
 			for (int j = 0; j < grid.getGrid().length; j++) {
-				Cell cell = Cell.newCell(String.valueOf(templateList.get(i).charAt(j)), new Point(j, i));
+				Cell cell = Cell.newInstance(String.valueOf(templateList.get(i).charAt(j)), new Point(j, i));
 				grid.setCell(cell);
 			}
 		}
