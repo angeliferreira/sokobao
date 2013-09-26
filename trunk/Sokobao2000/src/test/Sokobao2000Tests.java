@@ -5,7 +5,6 @@ import java.awt.Point;
 import junit.framework.Assert;
 import main.Sokobao2000;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import test.Utils.LevelTest;
@@ -269,21 +268,18 @@ public class Sokobao2000Tests {
 	}
 	
 	@Test
-	@Ignore
 	public void tryToPassHeroThroughTargetMovingWest() {
-
+		Assert.fail("IMPLEMENTAR");
 	}
 	
 	@Test
-	@Ignore
 	public void tryToPassHeroThroughTargetMovingNorth() {
-
+		Assert.fail("IMPLEMENTAR");
 	}
 	
 	@Test
-	@Ignore
 	public void tryToPassHeroThroughTargetMovingSouth() {
-
+		Assert.fail("IMPLEMENTAR");
 	}
 	
 }

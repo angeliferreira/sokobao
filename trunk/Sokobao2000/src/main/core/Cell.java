@@ -28,23 +28,23 @@ public class Cell {
 		position = newPosition;
 	}
 
-	public static Cell newCellWithDumbElement(Point position) {
+	public static Cell newWithDumbElement(Point position) {
 		return new Cell(GameElementFactory.newDumbElement(), position);
 	}
 
-	public static Cell newCellWithWall(Point position) {
+	public static Cell newWithWall(Point position) {
 		return new Cell(GameElementFactory.newWall(), position);
 	}
 	
-	public static Cell newCellWithHero(Point position) {
+	public static Cell newWithHero(Point position) {
 		return new Cell(GameElementFactory.newHero(), position);
 	}
 	
-	public static Cell newCellWithBlock(Point position) {
+	public static Cell newWithBlock(Point position) {
 		return new Cell(GameElementFactory.newBlock(), position);
 	}
 	
-	public static Cell newCellWithTarget(Point position) {
+	public static Cell newWithTarget(Point position) {
 		Cell cell = new Cell();
 		cell.position = position;
 		cell.primaryElement = GameElementFactory.newTarget();
@@ -52,21 +52,21 @@ public class Cell {
 		return cell;
 	}
 	
-	public static Cell newCell(String elementString, Point position) {
+	public static Cell newInstance(String elementString, Point position) {
 		if(elementString.equals(BLOCK.represent()))
-			return newCellWithBlock(position);
+			return newWithBlock(position);
 		
 		if(elementString.equals(HERO.represent()))
-			return newCellWithHero(position);
+			return newWithHero(position);
 		
 		if(elementString.equals(WALL.represent()))
-			return newCellWithWall(position);
+			return newWithWall(position);
 		
 		if(elementString.equals(TARGET.represent()))
-			return newCellWithTarget(position);
+			return newWithTarget(position);
 		
 		if(elementString.equals(DUMB.represent()))
-			return newCellWithDumbElement(position);
+			return newWithDumbElement(position);
 		
 		Assert.fail("Ops, couldn't create new Cell. :(");
 		return null;
