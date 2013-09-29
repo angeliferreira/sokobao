@@ -136,6 +136,70 @@ public class LevelTest {
 		return LevelConverter.templateToGrid(listTemplate);
 	}
 	
+	public static Grid gridTemplateLevel1WithHorizontalPositioningHeroBlockTarget() {
+		List<String> listTemplate = new ArrayList<String>();
+		listTemplate.add("WWWWWWWWWW"); 
+		listTemplate.add("W        W"); 
+		listTemplate.add("W  B   X W"); 
+		listTemplate.add("W        W");
+		listTemplate.add("W        W");
+		listTemplate.add("W   HBX  W");
+		listTemplate.add("W   B    W");
+		listTemplate.add("W X    B W");
+		listTemplate.add("W     X  W");
+		listTemplate.add("WWWWWWWWWW");
+		
+		return LevelConverter.templateToGrid(listTemplate);
+	}
+	
+	public static Grid gridTemplateLevel1WithHorizontalPositioningTargetBlockHero() {
+		List<String> listTemplate = new ArrayList<String>();
+		listTemplate.add("WWWWWWWWWW"); 
+		listTemplate.add("W        W"); 
+		listTemplate.add("W  B   X W"); 
+		listTemplate.add("W        W");
+		listTemplate.add("W        W");
+		listTemplate.add("W     XBHW");
+		listTemplate.add("W   B    W");
+		listTemplate.add("W X    B W");
+		listTemplate.add("W     X  W");
+		listTemplate.add("WWWWWWWWWW");
+		
+		return LevelConverter.templateToGrid(listTemplate);
+	}
+	
+	public static Grid gridTemplateLevel1WithVerticalPositioningTargetBlockHero() {
+		List<String> listTemplate = new ArrayList<String>();
+		listTemplate.add("WWWWWWWWWW"); 
+		listTemplate.add("W        W"); 
+		listTemplate.add("W  B   X W"); 
+		listTemplate.add("W     B  W");
+		listTemplate.add("W        W");
+		listTemplate.add("W     X  W");
+		listTemplate.add("W     B  W");
+		listTemplate.add("W X   HB W");
+		listTemplate.add("W     X  W");
+		listTemplate.add("WWWWWWWWWW");
+		
+		return LevelConverter.templateToGrid(listTemplate);
+	}
+	
+	public static Grid gridTemplateLevel1WithVerticalPositioningHeroBlockTarget() {
+		List<String> listTemplate = new ArrayList<String>();
+		listTemplate.add("WWWWWWWWWW"); 
+		listTemplate.add("W        W"); 
+		listTemplate.add("W  B   X W"); 
+		listTemplate.add("W     H  W");
+		listTemplate.add("W     B  W");
+		listTemplate.add("W     X  W");
+		listTemplate.add("W   B    W");
+		listTemplate.add("W X    B W");
+		listTemplate.add("W     X  W");
+		listTemplate.add("WWWWWWWWWW");
+		
+		return LevelConverter.templateToGrid(listTemplate);
+	}
+	
 //  INITIAL GRID LEVEL 1
 //	("WWWWWWWWWW") 
 //	("W        W"); 
