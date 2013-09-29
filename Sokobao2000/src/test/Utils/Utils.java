@@ -316,6 +316,126 @@ public class Utils {
 		template += "WWWWWWWWWW";
 		return template;
 	}
+	
+	public static String gridTemplateLevel1WithBlockOnTheTarget() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B   X W"; 
+		template += "W        W";
+		template += "W        W";
+		template += "W    H$  W";
+		template += "W   B    W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithBlockOnTheTarget1() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B   X W"; 
+		template += "W        W";
+		template += "W        W";
+		template += "W     $H W";
+		template += "W   B    W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithBlockOnTheTarget2() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B   X W"; 
+		template += "W     B  W";
+		template += "W        W";
+		template += "W     $  W";
+		template += "W     H  W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithBlockOnTheTarget3() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B   X W"; 
+		template += "W        W";
+		template += "W     H  W";
+		template += "W     $  W";
+		template += "W   B    W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithHeroOnTheTargetAfterMoveBlockNorth() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B   X W"; 
+		template += "W     B  W";
+		template += "W     B  W";
+		template += "W     #  W";
+		template += "W        W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithHeroOnTheTargetAfterMoveBlockSouth() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B   X W"; 
+		template += "W        W";
+		template += "W        W";
+		template += "W     #  W";
+		template += "W   B B  W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithHeroOnTheTargetAfterMoveBlockEast() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B   X W"; 
+		template += "W        W";
+		template += "W        W";
+		template += "W     #B W";
+		template += "W   B    W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithHeroOnTheTargetAfterMoveBlockWest() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B   X W"; 
+		template += "W        W";
+		template += "W        W";
+		template += "W    B#  W";
+		template += "W   B    W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
 
 	public static String gridTemplateLevel1WithHorizontalPositioningTargetHero() {
 		String template =     
@@ -323,6 +443,51 @@ public class Utils {
 		template += "W        W"; 
 		template += "W  B   XHW"; 
 		template += "W     B  W";
+		template += "W        W";
+		template += "W     X  W";
+		template += "W   B    W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithHorizontalPositioningHeroTarget() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B  HX W"; 
+		template += "W     B  W";
+		template += "W        W";
+		template += "W     X  W";
+		template += "W   B    W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithVerticalPositioningHeroTarget() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W      H W"; 
+		template += "W  B   X W"; 
+		template += "W     B  W";
+		template += "W        W";
+		template += "W     X  W";
+		template += "W   B    W";
+		template += "W X    B W";
+		template += "W     X  W";
+		template += "WWWWWWWWWW";
+		return template;
+	}
+	
+	public static String gridTemplateLevel1WithVerticalPositioningTargetHero() {
+		String template =     
+					"WWWWWWWWWW";
+		template += "W        W"; 
+		template += "W  B   X W"; 
+		template += "W     BH W";
 		template += "W        W";
 		template += "W     X  W";
 		template += "W   B    W";
