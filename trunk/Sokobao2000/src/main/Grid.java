@@ -53,6 +53,10 @@ public class Grid {
 		return getCell(position).getSecondaryElement();
 	}
 	
+	public GameElement getElement(int x, int y) {
+		return getElement(new Point(x, y));
+	}
+	
 	void setElement(GameElement gameElement, Point position) {
 		getCell(position).setSecondaryElement(gameElement);
 	}
