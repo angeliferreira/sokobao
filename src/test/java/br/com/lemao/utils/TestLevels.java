@@ -1,13 +1,13 @@
-package br.com.lemao.test.utils;
+package br.com.lemao.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.lemao.Grid;
-import br.com.lemao.LevelConverter;
+import br.com.lemao.core.Grid;
+import br.com.lemao.core.LevelConverter;
 
 
-public class LevelTest {
+public class TestLevels {
 	
 	public static Grid gridTemplateLevel1MovingHeroNorth1CellEast3CellsAndHeroMoveBlockEast2Cells() {
 		List<String> listTemplate = new ArrayList<String>();

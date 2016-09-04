@@ -5,12 +5,12 @@ import java.awt.Point;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.lemao.directions.East;
-import br.com.lemao.directions.North;
-import br.com.lemao.directions.South;
-import br.com.lemao.directions.West;
+import br.com.lemao.direction.East;
+import br.com.lemao.direction.North;
+import br.com.lemao.direction.South;
+import br.com.lemao.direction.West;
 
-public class DirectionTests {
+public class DirectionTest {
 	
 	@Test
 	public void newPositionEast() {

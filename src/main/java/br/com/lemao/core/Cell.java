@@ -1,12 +1,12 @@
 package br.com.lemao.core;
 
-import static br.com.lemao.game_element.GameElement.StringRepresentation.BLOCK;
-import static br.com.lemao.game_element.GameElement.StringRepresentation.DUMB;
-import static br.com.lemao.game_element.GameElement.StringRepresentation.HERO;
-import static br.com.lemao.game_element.GameElement.StringRepresentation.TARGET;
-import static br.com.lemao.game_element.GameElement.StringRepresentation.TARGET_WITH_BLOCK;
-import static br.com.lemao.game_element.GameElement.StringRepresentation.TARGET_WITH_HERO;
-import static br.com.lemao.game_element.GameElement.StringRepresentation.WALL;
+import static br.com.lemao.game_element.Block.BLOCK;
+import static br.com.lemao.game_element.DumbElement.DUMB;
+import static br.com.lemao.game_element.Hero.HERO;
+import static br.com.lemao.game_element.Target.TARGET;
+import static br.com.lemao.game_element.Target.TARGET_WITH_BLOCK;
+import static br.com.lemao.game_element.Target.TARGET_WITH_HERO;
+import static br.com.lemao.game_element.Wall.WALL;
 
 import java.awt.Point;
 
@@ -54,19 +54,19 @@ public class Cell {
 	}
 	
 	public static Cell newInstance(String elementString, Point position) {
-		if(elementString.equals(BLOCK.represent()))
+		if(elementString.equals(BLOCK))
 			return newWithBlock(position);
 		
-		if(elementString.equals(HERO.represent()))
+		if(elementString.equals(HERO))
 			return newWithHero(position);
 		
-		if(elementString.equals(WALL.represent()))
+		if(elementString.equals(WALL))
 			return newWithWall(position);
 		
-		if(elementString.equals(TARGET.represent()))
+		if(elementString.equals(TARGET))
 			return newWithTarget(position);
 		
-		if(elementString.equals(DUMB.represent()))
+		if(elementString.equals(DUMB))
 			return newWithDumbElement(position);
 		
 		Assert.fail("Ops, couldn't create new Cell. :(");
@@ -75,16 +75,16 @@ public class Cell {
 	
 	@Override
 	public String toString() {
-		if(primaryElement.toString().equals(DUMB.represent()))
+		if(primaryElement.toString().equals(DUMB))
 			return getSecondaryElement().toString();
 		
-		if(getSecondaryElement().toString().equals(DUMB.represent()))
+		if(getSecondaryElement().toString().equals(DUMB))
 			return primaryElement.toString();
 		
-		if(getSecondaryElement().toString().equals(HERO.represent()))
-			return TARGET_WITH_HERO.represent();
+		if(getSecondaryElement().toString().equals(HERO))
+			return TARGET_WITH_HERO;
 			
-		return TARGET_WITH_BLOCK.represent();
+		return TARGET_WITH_BLOCK;
 	}
 
 	public GameElement getSecondaryElement() {

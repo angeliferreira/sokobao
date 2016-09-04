@@ -1,9 +1,9 @@
-package br.com.lemao;
+package br.com.lemao.core;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LevelGame {
+public class GameLevel {
 
 	public static Grid gridLevel1() {
 		List<String> listLevel1 = new ArrayList<String>();

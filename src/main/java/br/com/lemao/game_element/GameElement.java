@@ -1,16 +1,14 @@
 package br.com.lemao.game_element;
 
-
-
 public abstract class GameElement {
 	
-	protected char singleName;
+	protected String singleName;
 
-	protected void setSingleName(char singleName) {
+	protected void setSingleName(String singleName) {
 		this.singleName = singleName;
 	}
 
-	private char getSingleName() {
+	private String getSingleName() {
 		return singleName;
 	}
 	
@@ -19,18 +17,18 @@ public abstract class GameElement {
 		return String.valueOf(getSingleName());
 	}
 	
-	public enum StringRepresentation {
-	    WALL("W"), TARGET("X"), BLOCK("B"), HERO("H"), DUMB(" "), TARGET_WITH_HERO("#"), TARGET_WITH_BLOCK("$");
-	    
-	    private StringRepresentation(String representation) {
-			this.representation = representation;
-		}
-	    
-	    private String representation;
-	    
-	    public String represent() {
-	    	return representation;
-	    }
-	}
+//	public enum StringRepresentation {
+//	    WALL("W"), TARGET("X"), BLOCK("B"), HERO("H"), DUMB(" "), TARGET_WITH_HERO("#"), TARGET_WITH_BLOCK("$");
+//	    
+//	    private StringRepresentation(String representation) {
+//			this.representation = representation;
+//		}
+//	    
+//	    private String representation;
+//	    
+//	    public String represent() {
+//	    	return representation;
+//	    }
+//	}
 	
 }

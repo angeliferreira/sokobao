@@ -1,4 +1,4 @@
-package br.com.lemao.directions;
+package br.com.lemao.direction;
 
 import java.awt.Point;
 

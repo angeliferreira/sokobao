@@ -1,9 +1,7 @@
-package br.com.lemao;
+package br.com.lemao.core;
 
 import java.awt.Point;
 import java.util.List;
-
-import br.com.lemao.core.Cell;
 
 public class LevelConverter {
 
